@@ -54,3 +54,10 @@ close_view = '<C-x>',
 }
 })
 require('nvim-autopairs').setup({ map_cr = true })
+
+local lspconfig = require('lspconfig')
+
+-- Настройка lspconfig для clangd с опцией autoformat
+lspconfig.clangd.setup{
+  autoformat = false,
+}
