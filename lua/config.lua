@@ -1,4 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -26,7 +28,11 @@ require("lazy").setup({
 	{"neovim/nvim-lspconfig"},
 	{'windwp/nvim-autopairs',
     event = "InsertEnter",},
-	{'neoclide/coc.nvim', branch = 'release'}
+	{'neoclide/coc.nvim', branch = 'release'},
+	{
+		'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
 })
 
 vim.opt.rtp:append(vim.fn.stdpath "config" .. "/parsers")
@@ -46,7 +52,15 @@ require'nvim-treesitter.configs'.setup {
 }
 vim.cmd.colorscheme "catppuccin-macchiato"
 
-require('lualine').setup()
+local lualine = require('lualine')
+lualine.setup{
+	options = { 
+		theme = 'auto',
+		component_separators = {left = '', right = ''},
+		section_separators = { left = '', right = ''},
+	}
+}
+
 require'navigator'.setup()
 require('guihua.maps').setup({
 maps = {
