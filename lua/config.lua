@@ -28,11 +28,13 @@ require("lazy").setup({
 	{ 'windwp/nvim-autopairs',
 		event = "InsertEnter",
 	},
-	{'neoclide/coc.nvim', branch = 'release'},
-	{
-		'nvim-lualine/lualine.nvim',
+	{ 'ms-jpq/coq_nvim', branch = 'coq' },
+	{ 'ms-jpq/coq.artifacts', branch = 'artifacts' },
+	{ 'ms-jpq/coq.thirdparty', branch = '3p' },
+	{ 'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	}
+	},
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 })
 
 -- setup parsers
@@ -63,7 +65,13 @@ lualine.setup{
 	}
 }
 
-require'navigator'.setup()
+local navigator = require('navigator')
+navigator.setup {
+	lsp = {
+		enable = true,
+		format_on_save = false,
+	},
+}
 
 require('guihua.maps').setup({
 	maps = {
@@ -75,8 +83,10 @@ require('nvim-autopairs').setup({ map_cr = true })
 
 local lspconfig = require('lspconfig')
 
-lspconfig.clangd.setup{
+lspconfig.clangd.setup {
 	opts = {
   	autoformat = false,
 	},
 }
+
+require("ibl").setup()
