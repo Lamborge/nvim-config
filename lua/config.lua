@@ -14,27 +14,28 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {"nvim-tree/nvim-web-devicons"},
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    {
-	'ray-x/navigator.lua',
-        requires = {
-            { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-            { 'neovim/nvim-lspconfig' },
-        },
-    },
-    {'ray-x/guihua.lua', run = 'cd lua/fzy && make'},
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-	{"neovim/nvim-lspconfig"},
-	{'windwp/nvim-autopairs',
-    event = "InsertEnter",},
+	{ "nvim-tree/nvim-web-devicons" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ 'ray-x/navigator.lua',
+		requires = {
+			{ 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+			{ 'neovim/nvim-lspconfig' },
+		},
+	},
+	{ 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "neovim/nvim-lspconfig" },
+	{ 'windwp/nvim-autopairs',
+		event = "InsertEnter",
+	},
 	{'neoclide/coc.nvim', branch = 'release'},
 	{
 		'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 })
 
+-- setup parsers
 vim.opt.rtp:append(vim.fn.stdpath "config" .. "/parsers")
 require'nvim-treesitter.configs'.setup {
   parser_install_dir = "~/.config/nvim/parsers",
@@ -50,6 +51,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
  },
 }
+
 vim.cmd.colorscheme "catppuccin-macchiato"
 
 local lualine = require('lualine')
@@ -62,16 +64,19 @@ lualine.setup{
 }
 
 require'navigator'.setup()
+
 require('guihua.maps').setup({
-maps = {
-close_view = '<C-x>',
-}
+	maps = {
+		close_view = '<C-x>',
+	}
 })
+
 require('nvim-autopairs').setup({ map_cr = true })
 
 local lspconfig = require('lspconfig')
 
--- Настройка lspconfig для clangd с опцией autoformat
 lspconfig.clangd.setup{
-  autoformat = false,
+	opts = {
+  	autoformat = false,
+	},
 }
