@@ -28,13 +28,39 @@ require("lazy").setup({
 	{ 'windwp/nvim-autopairs',
 		event = "InsertEnter",
 	},
-	{ 'ms-jpq/coq_nvim', branch = 'coq' },
+	{ 'ms-jpq/coq_nvim', branch = 'coq' }, 
 	{ 'ms-jpq/coq.artifacts', branch = 'artifacts' },
 	{ 'ms-jpq/coq.thirdparty', branch = '3p' },
 	{ 'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	},
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+    	require("nvim-tree").setup {}
+  	end,
+	},
+	{ 'jghauser/mkdir.nvim' },
+	{
+		's1n7ax/nvim-terminal',
+		config = function()
+			vim.o.hidden = true
+			require('nvim-terminal').setup()
+		end,
+	},
+	{
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    },
+    lazy = false,
+}
 })
 
 -- setup parsers
@@ -90,3 +116,5 @@ lspconfig.clangd.setup {
 }
 
 require("ibl").setup()
+
+require('Comment').setup()
