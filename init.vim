@@ -9,3 +9,4 @@ lua require('nvim-tree')
 :COQnow -s
 
 nnoremap <F3> :lua require'dapui'.toggle()<CR>
+nnoremap <leader>t :NvimTreeToggle<CR>
