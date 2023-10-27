@@ -7,3 +7,5 @@ lua require('nvim-tree')
 :set tabstop=2
 
 :COQnow -s
+
+nnoremap <F3> :lua require'dapui'.toggle()<CR>
