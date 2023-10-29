@@ -62,6 +62,14 @@ require("lazy").setup({
 	},
 	{ 'mfussenegger/nvim-dap' },
 	{ 'rcarriga/nvim-dap-ui' },
+	{
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
+	},
+	{ 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' },
+	{ "tiagovla/scope.nvim" },
 })
 
 -- setup parsers
@@ -147,3 +155,7 @@ dap.configurations.c = {
     args = {},
   },
 }
+
+vim.opt.termguicolors = true
+require("bufferline").setup{}
+require("scope").setup({})

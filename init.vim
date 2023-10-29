@@ -1,4 +1,5 @@
 :set number
+:set cursorline
 
 lua require('config')
 lua require('nvim-tree')
@@ -10,3 +11,4 @@ lua require('nvim-tree')
 
 nnoremap <F3> :lua require'dapui'.toggle()<CR>
 nnoremap <leader>t :NvimTreeToggle<CR>
+noremap <leader>e :bn<CR> 
