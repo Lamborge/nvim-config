@@ -41,29 +41,13 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-    	require("nvim-tree").setup {}
-  	end,
 	},
 	{ 'jghauser/mkdir.nvim' },
-	{
-		's1n7ax/nvim-terminal',
-		config = function()
-			vim.o.hidden = true
-			require('nvim-terminal').setup()
-		end,
-	},
-	{
-    'numToStr/Comment.nvim',
-    lazy = false,
-	},
+	{ 's1n7ax/nvim-terminal' },
+	{ 'numToStr/Comment.nvim', lazy = false },
 	{ 'mfussenegger/nvim-dap' },
 	{ 'rcarriga/nvim-dap-ui' },
-	{
-		"smjonas/inc-rename.nvim",
-		config = function()
-			require("inc_rename").setup()
-		end,
+	{ "smjonas/inc-rename.nvim",
 	},
 	{ 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' },
 	{ "tiagovla/scope.nvim" },

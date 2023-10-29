@@ -6,3 +6,7 @@ require("ibl").setup()
 require('Comment').setup()
 require("bufferline").setup{}
 require("scope").setup({})
+require("nvim-tree").setup {}
+require("inc_rename").setup()
+require('nvim-terminal').setup()
+require('nvim-autopairs').setup({ map_cr = true })
