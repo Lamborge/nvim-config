@@ -1,11 +1,13 @@
-:set number
-:set cursorline
+set number
+set cursorline
+set shiftwidth=2
+set tabstop=2
+set termguicolors
 
+lua require('lua/lazy')
 lua require('config')
-lua require('nvim-tree')
 
-:set shiftwidth=2
-:set tabstop=2
+colorscheme catppuccin-mocha
 
 :COQnow -s
 
