@@ -70,6 +70,7 @@ require("lazy").setup({
 	},
 	{ 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' },
 	{ "tiagovla/scope.nvim" },
+	{ 'andweeb/presence.nvim' },
 })
 
 -- setup parsers
